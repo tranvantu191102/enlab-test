@@ -20,6 +20,13 @@ const Summary = () => {
     dispatch(changeScore(0));
     navigate("/questions");
   };
+
+  const handleExit = () => {
+    dispatch(resetQuestions());
+    dispatch(changeScore(0));
+    navigate("/");
+  };
+
   return (
     <div className="flex items-center justify-center flex-col h-screen mx-2">
       <Helmet title={"Summary"} />
@@ -42,6 +49,9 @@ const Summary = () => {
           timeStart,
           timeEnd
         )}`}</p>
+        <p className="mt-3 text-blue-500">
+          <Link to="/review">Review Your Answer</Link>
+        </p>
         <div className="flex flex-col md:flex-row mt-5 ">
           <button
             className="button mr-2 mb-4 md:mb-0"
@@ -49,8 +59,8 @@ const Summary = () => {
           >
             Play Again
           </button>
-          <button className="button">
-            <Link to="/review">Review Your Answer</Link>
+          <button className="button" onClick={handleExit}>
+            Exit
           </button>
         </div>
       </div>

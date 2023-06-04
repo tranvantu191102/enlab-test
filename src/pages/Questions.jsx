@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getApiQuestion } from "../api/api";
-import { startCountTime } from "../redux/questionSlice";
+import {
+  startCountTime,
+  changeScore,
+  resetQuestions,
+} from "../redux/questionSlice";
 
 import QuestionItem from "../components/QuestionItem";
 import Loading from "../components/Loading";
@@ -27,6 +31,8 @@ const Questions = () => {
       setQuestions(data.results);
       setLoading(false);
       dispatch(startCountTime());
+      dispatch(changeScore(0));
+      dispatch(resetQuestions());
     };
     getAPi();
   }, []);
@@ -43,7 +49,6 @@ const Questions = () => {
       setOptions(answers);
     }
   }, [currentQuestions, questions]);
-
   return (
     <div>
       <Helmet title={"Questions"} />
