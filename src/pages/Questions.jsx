@@ -43,7 +43,6 @@ const Questions = () => {
       setOptions(answers);
     }
   }, [currentQuestions, questions]);
-  console.log(options);
 
   return (
     <div>

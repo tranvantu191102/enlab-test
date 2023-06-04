@@ -7,7 +7,6 @@ import Helmet from "../components/Helmet";
 
 const Review = () => {
   const { questions } = useSelector((state) => state.question);
-  console.log("questions", questions);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
