@@ -9,7 +9,7 @@ import Review from "./Review";
 const Layout = () => {
   return (
     <div className="bg-[#88DF86] min-h-screen">
-      <div className="w-[500px] h-full m-auto flex flex-col justify-center items-center">
+      <div className="w-full md:w-[500px] h-full m-auto flex flex-col justify-center items-center">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/questions" element={<Questions />} />

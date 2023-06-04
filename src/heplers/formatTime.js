@@ -6,12 +6,14 @@ export const formatTime = (start, end) => {
     const seconds = Math.floor(time / 1000);
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
-    return `${hours} hours ${minutes} minutes ${seconds} seconds`;
+    return `${hours} hours ${minutes - hours * 60} minutes ${
+      seconds - hours * 60 - minutes * 60
+    } seconds`;
   }
   if (time > minute) {
     const seconds = Math.floor(time / 1000);
     const minutes = Math.floor(seconds / 60);
-    return `${minutes} minutes ${seconds} seconds`;
+    return `${minutes} minutes ${seconds - minutes * 60} seconds`;
   }
   return `${Math.floor(time / 1000)} seconds`;
 };

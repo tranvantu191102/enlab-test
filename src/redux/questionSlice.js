@@ -22,6 +22,12 @@ const questionSlice = createSlice({
         questions: [...state.questions, action.payload],
       };
     },
+    resetQuestions: (state) => {
+      return {
+        ...state,
+        questions: [],
+      };
+    },
     startCountTime: (state) => {
       return {
         ...state,
@@ -42,5 +48,6 @@ export const {
   addQuestionSelected,
   startCountTime,
   endCountTime,
+  resetQuestions,
 } = questionSlice.actions;
 export default questionSlice.reducer;

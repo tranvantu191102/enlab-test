@@ -16,6 +16,8 @@ const QuestionItem = ({
   setCurrentQuestions,
 }) => {
   const [questionSelected, setQuestionSelected] = useState(undefined);
+  const [messageWarning, setMessageWarning] = useState(undefined);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { score, amountOfQuestions } = useSelector((state) => state.question);
@@ -35,17 +37,18 @@ const QuestionItem = ({
       addQuestionSelected({ ...question, answer_select: questionSelected })
     );
     setQuestionSelected(undefined);
+    setMessageWarning(undefined);
   };
   return (
-    <div className="flex items-center justify-center flex-col h-screen">
-      <div>
+    <div className="flex items-center justify-center flex-col h-screen mx-2">
+      <div className="bg-white p-3 md:p-8 rounded-lg">
         <div className="text-center">
-          <h4 className="text-xl mb-4 font-semibold text-white">{`Question ${
+          <h4 className="text-base md:text-xl mb-4 font-semibold text-black">{`Question ${
             currentQuestions + 1
           }/${amountOfQuestions}`}</h4>
         </div>
         <div className="text-center">
-          <p className="text-xl mb-4 font-semibold text-white">
+          <p className="text-base md:text-xl mb-4 font-semibold text-black">
             {decodeHTML(question.question)}
           </p>
         </div>
@@ -55,13 +58,19 @@ const QuestionItem = ({
             setQuestionSelected={setQuestionSelected}
             questionSelected={questionSelected}
             options={options}
+            setMessageWarning={setMessageWarning}
           />
+        </div>
+        <div className="text-center">
+          {messageWarning ? (
+            <p className="text-[#FF3A38]">{messageWarning}</p>
+          ) : null}
         </div>
         <div className="flex justify-center">
           <button
             className={`${
               questionSelected
-                ? "bg-white text-black"
+                ? "bg-black text-white"
                 : "bg-gray-400 text-white"
             } px-12 py-3 mt-10 rounded-lg`}
             disabled={questionSelected ? false : true}
